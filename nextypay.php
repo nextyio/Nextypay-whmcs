@@ -78,7 +78,7 @@ function nextypay_config()
              'FriendlyName' => 'Merchant ID',
              'Type' => 'text',
              'Size' => '25',
-             'Default' => '',
+             'Default' => '*',
              'Description' => 'Enter your mid here',
          ),
         'shopId' => array(
@@ -202,7 +202,7 @@ function nextypay_link($params)
     $postfields['description'] = $description;
     $postfields['amount'] = $amount;
     $postfields['currency'] = $currencyCode;
-    $postfields['toWallet'] = $wallet;
+    $postfields['toWallet'] = $toWallet;
     $postfields['currency'] = $currencyCode;
     $postfields['first_name'] = $firstname;
     $postfields['last_name'] = $lastname;
