@@ -42,12 +42,7 @@ $transactionStatus = $success ? 'Success' : 'Failure';
  * originated from them. In the case of our example here, this is achieved by
  * way of a shared secret which is used to build and compare a hash.
  */
-//echo $_POST;
 $secretKey = $nextypayParams['secretKey'];
-//$hash = md5($transactionId . $invoiceId . $paymentAmount . $secretKey);
-//echo $hash;
-//echo $hash.'<br>';
-//echo  md5($invoiceId . $transactionId . $paymentAmount . $secretKey);
 if ($hash != md5($invoiceId . $transactionId . $paymentAmount . $secretKey)) {
     $transactionStatus = 'Hash Verification Failure';
     $success = false;

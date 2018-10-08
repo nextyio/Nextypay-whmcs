@@ -74,14 +74,13 @@ function nextypay_config()
             'Value' => 'Nextypay',
         ),
         // a text field type allows for single line text input
-        // 'accountID' => array(
-        //     'FriendlyName' => 'Account ID',
-        //     'Type' => 'text',
-        //     'Size' => '25',
-        //     'Default' => '',
-        //     'Description' => 'Enter your account ID here',
-        // ),
-        // a password field type allows for masked text input
+         'mid' => array(
+             'FriendlyName' => 'Merchant ID',
+             'Type' => 'text',
+             'Size' => '25',
+             'Default' => '',
+             'Description' => 'Enter your mid here',
+         ),
         'shopId' => array(
             'FriendlyName' => 'Shop ID',
             'Type' => 'text',
@@ -112,13 +111,6 @@ function nextypay_config()
             'Default' => 'Root123',
             'Description' => 'Enter secret key here',
         ),
-        // the yesno field type displays a single checkbox option
-        // 'testMode' => array(
-        //     'FriendlyName' => 'Test Mode',
-        //     'Type' => 'yesno',
-        //     'Description' => 'Tick to enable test mode',
-        // ),
-        // the dropdown field type renders a select menu of options
         'dropdownField' => array(
             'FriendlyName' => 'Dropdown Field',
             'Type' => 'dropdown',
@@ -163,7 +155,6 @@ function nextypay_link($params)
 {
     // Gateway Configuration Parameters
     $accountId = $params['accountID'];
-    $secretKey = $params['secretKey'];
     $testMode = $params['testMode'];
     $dropdownField = $params['dropdownField'];
     $radioField = $params['radioField'];
@@ -195,22 +186,23 @@ function nextypay_link($params)
     $moduleDisplayName = $params['name'];
     $moduleName = $params['paymentmethod'];
     $whmcsVersion = $params['whmcsVersion'];
-    $mainUrl = 'coming soon!'; //need Server, Domain
-    $testUrl = 'https://localhost:3008';
+
     $url = $params['gatewayAddress']; //to change
     $wallet = $params['walletAddress'];
     $toWallet = $wallet;
     $shopId = $params['shopId'];
+    $mid = $params['mid'];
+    $secretKey = $params['secretKey'];
 
 
     $postfields = array();
-    $postfields['username'] = $username;
+    $postfields['mid'] = $mid;
     $postfields['orderId'] = $invoiceId;
     $postfields['shopId'] = $shopId;
     $postfields['description'] = $description;
     $postfields['amount'] = $amount;
     $postfields['currency'] = $currencyCode;
-    $postfields['wallet'] = $wallet;
+    $postfields['toWallet'] = $wallet;
     $postfields['currency'] = $currencyCode;
     $postfields['first_name'] = $firstname;
     $postfields['last_name'] = $lastname;
