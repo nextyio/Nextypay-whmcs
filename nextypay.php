@@ -187,7 +187,7 @@ function nextypay_link($params)
     $moduleName = $params['paymentmethod'];
     $whmcsVersion = $params['whmcsVersion'];
 
-    $url = $params['gatewayAddress']; //to change
+    $url = $params['gatewayAddress'] . '#mainContent'; //to change
     $wallet = $params['walletAddress'];
     $toWallet = $wallet;
     $shopId = $params['shopId'];
