@@ -108,8 +108,15 @@ function nextypay_config()
             'FriendlyName' => 'Secret Key',
             'Type' => 'password',
             'Size' => '32',
-            'Default' => 'Root123',
+            'Default' => '',
             'Description' => 'Enter secret key here',
+        ),
+        'apiKey' => array(
+            'FriendlyName' => 'Api Key',
+            'Type' => 'password',
+            'Size' => '32',
+            'Default' => '',
+            'Description' => 'Enter api key here',
         ),
         'dropdownField' => array(
             'FriendlyName' => 'Dropdown Field',
@@ -193,6 +200,7 @@ function nextypay_link($params)
     $shopId = $params['shopId'];
     $mid = $params['mid'];
     $secretKey = $params['secretKey'];
+    $apiKey = $params['apiKey'];
 
 
     $postfields = array();
@@ -216,6 +224,7 @@ function nextypay_link($params)
     $postfields['phone'] = $phone;
     $postfields['callbackUrl'] = $systemUrl . '/modules/gateways/callback/' . $moduleName . '.php';
     $postfields['returnUrl'] = $returnUrl;
+    $postfields['apiKey'] = $apiKey;
 
     $htmlOutput = '<form method="post" action="' . $url . '">';
     foreach ($postfields as $k => $v) {
